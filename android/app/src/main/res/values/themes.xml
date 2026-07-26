@@ -1,0 +1,14 @@
+<resources>
+    <style name="Theme.KeyServer" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#6750A4</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#958DA5</item>
+        <item name="colorBackground">#FFFBFE</item>
+        <item name="colorSurface">#FFFBFE</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+    </style>
+    <style name="Theme.KeyServer.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>
