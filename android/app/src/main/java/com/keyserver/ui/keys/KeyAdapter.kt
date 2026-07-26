@@ -10,7 +10,10 @@ import com.keyserver.data.local.KeyEntity
 
 class KeyAdapter(
     private var keys: List<KeyEntity> = emptyList(),
-    private val onItemClick: (KeyEntity) -> Unit
+    private val onItemClick: (KeyEntity) -> Unit,
+    private val onDelete: (KeyEntity) -> Unit = {},
+    private val onRevoke: (KeyEntity) -> Unit = {},
+    private val onActivate: (KeyEntity) -> Unit = {}
 ) : RecyclerView.Adapter<KeyAdapter.KeyViewHolder>() {
 
     inner class KeyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,6 +26,9 @@ class KeyAdapter(
             tvStatus.text = key.status.uppercase()
             tvNotes.text = key.notes ?: ""
             itemView.setOnClickListener { onItemClick(key) }
+            itemView.findViewById<View>(R.id.btnDelete)?.setOnClickListener { onDelete(key) }
+            itemView.findViewById<View>(R.id.btnRevoke)?.setOnClickListener { onRevoke(key) }
+            itemView.findViewById<View>(R.id.btnActivate)?.setOnClickListener { onActivate(key) }
         }
     }
 
