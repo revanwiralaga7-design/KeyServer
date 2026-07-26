@@ -12,5 +12,12 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this)[DashboardViewModel::class.java]
+        viewModel.loadStats()
+        viewModel.stats.observe(viewLifecycleOwner) { stats ->
+            view.findViewById<android.widget.TextView>(R.id.tvStatsTotal).text = "Total Key: ${stats.totalKeys}"
+            view.findViewById<android.widget.TextView>(R.id.tvStatsActive).text = "Aktif: ${stats.activeKeys}"
+            view.findViewById<android.widget.TextView>(R.id.tvStatsExpired).text = "Expired: ${stats.expiredKeys}"
+            view.findViewById<android.widget.TextView>(R.id.tvStatsRevoked).text = "Revoked: ${stats.revokedKeys}"
+        }
     }
 }
